@@ -5,18 +5,11 @@ import reducers from './reducers';
 import sagas from './sagas';
 
 const middlewares = [];
-
-const sagaMonitor = __DEV__ ? console.log.createSagaMonitor() : null;
-const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
+const sagaMiddleware = createSagaMiddleware();
 
 middlewares.push(sagaMiddleware);
 
-const composer = __DEV__
-  ? compose(
-      applyMiddleware(...middlewares),
-      console.log.createEnhancer(),
-    )
-  : compose(applyMiddleware(...middlewares));
+const composer = compose(applyMiddleware(...middlewares));
 
 const store = createStore(reducers, composer);
 
