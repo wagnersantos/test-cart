@@ -1,9 +1,13 @@
 import React from 'react';
 import { Left, Body, Right, Button } from 'native-base';
+import PropTypes from 'prop-types';
+import { Actions } from 'react-native-router-flux';
 
 import { StyledHeader, StyledIcon, StyledTitle } from './styled';
 
-export default function AppHeader() {
+const AppHeader = ({ title }) => {
+  const goToPage = page => Actions.jump(page);
+
   return (
     <StyledHeader>
       <Left>
@@ -12,16 +16,29 @@ export default function AppHeader() {
         </Button>
       </Left>
       <Body>
-        <StyledTitle>produtos</StyledTitle>
+        <StyledTitle>{title}</StyledTitle>
       </Body>
       <Right>
-        <Button transparent>
-          <StyledIcon name="search" fontSize="24" />
+        <Button transparent onPress={() => goToPage('home')}>
+          <StyledIcon
+            type="MaterialCommunityIcons"
+            name="home-plus"
+            fontSize="30"
+          />
         </Button>
-        <Button transparent>
-          <StyledIcon name="heart" fontSize="24" />
+        <Button transparent onPress={() => goToPage('cart')}>
+          <StyledIcon
+            type="MaterialCommunityIcons"
+            name="cart-outline"
+            fontSize="24"
+          />
         </Button>
       </Right>
     </StyledHeader>
   );
-}
+};
+AppHeader.propTypes = {
+  title: PropTypes.string.isRequired,
+};
+
+export default AppHeader;
