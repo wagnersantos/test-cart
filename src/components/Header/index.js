@@ -37,6 +37,7 @@ const AppHeader = ({ title }) => {
     </StyledHeader>
   );
 };
+
 AppHeader.propTypes = {
   title: PropTypes.string.isRequired,
 };
