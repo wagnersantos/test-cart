@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Actions } from 'react-native-router-flux';
 
 import { StyledHeader, StyledIcon, StyledTitle } from './styled';
+import { Badge } from 'components';
 
 const AppHeader = ({ title }) => {
   const goToPage = page => Actions.jump(page);
@@ -32,6 +33,7 @@ const AppHeader = ({ title }) => {
             name="cart-outline"
             fontSize="24"
           />
+          <Badge>12</Badge>
         </Button>
       </Right>
     </StyledHeader>
