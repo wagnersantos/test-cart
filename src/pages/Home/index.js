@@ -1,15 +1,20 @@
 import React from 'react';
-import { Container, Content } from 'native-base';
+import { Container, Content, Left, Right } from 'native-base';
 
-import { AppHeader } from 'components';
+import { AppHeader, Search } from 'components';
 
 // import { Container } from './styled';
 
 export default function Home() {
   return (
     <Container>
+      <AppHeader title="produtos" />
+
       <Content>
-        <AppHeader title="produtos" />;
+        <Left>
+          <Search />
+        </Left>
+        <Right />
       </Content>
     </Container>
   );

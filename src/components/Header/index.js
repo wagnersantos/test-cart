@@ -3,7 +3,7 @@ import { Left, Body, Right, Button } from 'native-base';
 import PropTypes from 'prop-types';
 import { Actions } from 'react-native-router-flux';
 
-import { Bar } from 'components';
+import Bar from '../StatusBar';
 import { StyledHeader, StyledIcon, StyledTitle, StyledBadge } from './styled';
 
 const AppHeader = ({ title }) => {
