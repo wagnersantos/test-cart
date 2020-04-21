@@ -3,6 +3,7 @@ import { Left, Body, Right, Button } from 'native-base';
 import PropTypes from 'prop-types';
 import { Actions } from 'react-native-router-flux';
 
+import { Bar } from 'components';
 import { StyledHeader, StyledIcon, StyledTitle, StyledBadge } from './styled';
 
 const AppHeader = ({ title }) => {
@@ -10,6 +11,7 @@ const AppHeader = ({ title }) => {
 
   return (
     <StyledHeader>
+      <Bar />
       <Left style={{ flex: 1 }}>
         <Button transparent>
           <StyledIcon name="menu" fontSize="30" />
