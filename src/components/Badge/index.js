@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 
 import { StyledBadge, StyledText } from './styled';
 
-const Badge = ({ children, size, color, colorText }) => (
-  <StyledBadge size={size} color={color}>
+const Badge = ({ children, size, color, colorText, ...rest }) => (
+  <StyledBadge size={size} color={color} {...rest}>
     <StyledText colorText={colorText}>{children}</StyledText>
   </StyledBadge>
 );
 
 Badge.defaultProps = {
   children: {},
-  size: 0.6,
+  size: 0.5,
   color: 'white',
   colorText: 'black',
 };
