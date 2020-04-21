@@ -10,15 +10,15 @@ const AppHeader = ({ title }) => {
 
   return (
     <StyledHeader>
-      <Left>
+      <Left style={{ flex: 1 }}>
         <Button transparent>
           <StyledIcon name="menu" fontSize="30" />
         </Button>
       </Left>
-      <Body>
+      <Body style={{ flex: 1 }}>
         <StyledTitle>{title}</StyledTitle>
       </Body>
-      <Right>
+      <Right style={{ flex: 1 }}>
         <Button transparent onPress={() => goToPage('home')}>
           <StyledIcon
             type="MaterialCommunityIcons"
