@@ -4,10 +4,7 @@
     "es6": true,
     "jest": true
   },
-  "extends": [
-    "airbnb",
-    "plugin:react-native/all"
-  ],
+  "extends": ["airbnb", "plugin:react-native/all"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly",
@@ -21,6 +18,7 @@
     "sourceType": "module"
   },
   "plugins": [
+    "prettire",
     "react",
     "react-native",
     "jsx-a11y",
@@ -28,13 +26,11 @@
     "react-hooks"
   ],
   "rules": {
+    "prettier/prettier": "error",
     "react/jsx-filename-extension": [
       "error",
       {
-        "extensions": [
-          ".js",
-          ".jsx"
-        ]
+        "extensions": [".js", ".jsx"]
       }
     ],
     "react-hooks/rules-of-hooks": "error",
@@ -56,9 +52,7 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "paths": [
-          "src"
-        ]
+        "paths": ["src"]
       }
     }
   }
