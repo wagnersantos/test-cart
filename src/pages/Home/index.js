@@ -1,9 +1,9 @@
 import React from 'react';
 import { Container, Content, Left, Right } from 'native-base';
 
-import { AppHeader, Search } from 'components';
+import { AppHeader } from 'components';
 
-// import { Container } from './styled';
+import { StyledSearch } from './styled';
 
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
 
       <Content>
         <Left>
-          <Search />
+          <StyledSearch />
         </Left>
         <Right />
       </Content>
