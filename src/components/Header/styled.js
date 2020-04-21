@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import { Header, Icon, Title } from 'native-base';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
-import { colors } from 'core/assets/styles';
+import { colors, typographies } from 'core/assets/styles';
 import Badge from '../Badge';
 
 const isIos = Platform.OS === 'ios';
@@ -21,12 +21,14 @@ export const StyledIcon = styled(Icon)`
 `;
 
 export const StyledTitle = styled(Title)`
+  font-family: ${typographies.exoBold};
   color: ${colors.white};
   text-transform: uppercase;
 `;
 
 export const StyledBadge = styled(Badge)`
+  font-family: ${typographies.exoRegular};
   position: absolute;
-  right: -10;
-  top: -5;
+  right: -10px;
+  top: -5px;
 `;
