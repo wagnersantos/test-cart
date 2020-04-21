@@ -4,6 +4,6 @@ import { AppHeader } from 'components';
 
 // import { Container } from './styled';
 
-export default function Home() {
-  return <AppHeader title="produtos" />;
+export default function Cart() {
+  return <AppHeader title="carrinho" />;
 }
