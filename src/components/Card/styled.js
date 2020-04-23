@@ -15,6 +15,7 @@ export const Title = styled(Text)`
   color: ${colors.gray};
   margin: 5px 0;
   font-size: 15px;
+  width: 150px;
 `;
 
 export const LastUnits = styled(Tag)`

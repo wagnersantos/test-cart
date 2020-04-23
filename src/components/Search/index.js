@@ -5,7 +5,7 @@ import { Input, Item, Icon } from 'native-base';
 
 const Search = () => {
   return (
-    <Item regular>
+    <Item regular style={{ height: 40 }}>
       <Icon name="search" />
       <Input />
       <Icon type="MaterialCommunityIcons" name="barcode-scan" />

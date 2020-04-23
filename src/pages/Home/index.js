@@ -1,14 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import {
-  Container,
-  Content,
-  Left,
-  Right,
-  Text,
-  Icon,
-  CheckBox,
-} from 'native-base';
+import { Container, Text, Icon, List, ListItem } from 'native-base';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { AppHeader, Card } from 'components';
@@ -50,8 +42,12 @@ export default function Home() {
             <Icon type="MaterialCommunityIcons" name="chevron-down" />
           </StyledRight>
         </Wrapper>
-        <Results>Mostrando 3 de 320 produtos</Results>
-        <Card />
+        <Results>Mostrando 2 de 320 produtos</Results>
+        <List
+          keyExtractor={item => item.sku}
+          dataArray={products}
+          renderRow={item => <Card products={item} />}
+        />
       </StyledContent>
     </Container>
   );

@@ -21,10 +21,10 @@ import {
   LastUnits,
 } from './styled';
 
-const AppCard = () => (
+const AppCard = ({ products }) => (
   <StyledCard>
     <CardItem bordered cardBody style={{ justifyContent: 'space-between' }}>
-      <Title>3x protein po sac 300g</Title>
+      <Title numberOfLines={1}>{products.name}</Title>
       <LastUnits color="red">últimas unidades</LastUnits>
     </CardItem>
     <CardItem bordered cardBody>
@@ -32,24 +32,23 @@ const AppCard = () => (
         <Left>
           <StyledImage
             source={{
-              uri:
-                'https://www.drogariacatarinense.com.br/BACKOFFICE/Uploads/Produto/Normal/7908134200071-64961.jpg',
+              uri: products.imageURL,
             }}
           />
           <Price>
             <StyledText bold>R$ </StyledText>
-            <StyledText bold>28,90</StyledText>
+            <StyledText bold>{products.price}</StyledText>
           </Price>
         </Left>
         <Right>
           <View>
             <Row>
               <Label>fabricante: </Label>
-              <StyledText>CIMED</StyledText>
+              <StyledText>{products.maker}</StyledText>
             </Row>
             <Row>
               <Label>estoque: </Label>
-              <StyledText>150 un</StyledText>
+              <StyledText>{`${products.quantityAvailable} un`}</StyledText>
             </Row>
           </View>
           <Row margin={10}>
@@ -63,8 +62,8 @@ const AppCard = () => (
       </StyledBody>
     </CardItem>
     <CardItem bordered cardBody>
-      <Tag color="black">SKU 10940</Tag>
-      <Tag color="green">suplementos</Tag>
+      <Tag color="black">{`sku ${products.sku}`}</Tag>
+      <Tag color="green">{products.category}</Tag>
       <TouchableOpacity>
         <ButtonIcon type="MaterialCommunityIcons" name="information-outline" />
       </TouchableOpacity>
