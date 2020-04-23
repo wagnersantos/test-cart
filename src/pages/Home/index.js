@@ -19,6 +19,7 @@ import {
   StyledLeft,
   StyledRight,
   StyledCheckBox,
+  Results,
 } from './styled';
 
 export default function Home() {
@@ -37,7 +38,7 @@ export default function Home() {
             <Icon type="MaterialCommunityIcons" name="chevron-down" />
           </StyledRight>
         </Wrapper>
-
+        <Results>Mostrando 3 de 320 produtos</Results>
         <Card />
       </StyledContent>
     </Container>

@@ -1,7 +1,9 @@
 import styled from 'styled-components/native';
-import { Content, CheckBox } from 'native-base';
+import { Content, CheckBox, Text } from 'native-base';
 
 import { Search } from 'components';
+
+import { colors, typographies } from 'core/assets/styles';
 
 export const StyledSearch = styled(Search)``;
 
@@ -29,4 +31,12 @@ export const StyledCheckBox = styled(CheckBox)`
   margin-right: 15px;
   width: 15px;
   height: 15px;
+`;
+
+export const Results = styled(Text)`
+  font-family: ${typographies.exoRegular};
+  font-size: 16px;
+  color: ${colors.gray};
+  text-align: center;
+  padding: 20px 0;
 `;

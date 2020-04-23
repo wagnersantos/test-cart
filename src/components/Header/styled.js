@@ -13,7 +13,6 @@ export const StyledHeader = styled(Header)`
   background-color: ${colors.green};
   height: ${headerHeight + getStatusBarHeight()}px;
   padding-top: ${getStatusBarHeight() / 3}px;
-  ${alert(getStatusBarHeight())}
 `;
 
 export const StyledIcon = styled(Icon)`
