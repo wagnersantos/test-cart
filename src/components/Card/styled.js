@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components/native';
-import { Card, CardItem, Text, Body, Icon } from 'native-base';
+import { Card, CardItem, Text, Body, Icon, Button } from 'native-base';
 
 import { colors, typographies } from 'core/assets/styles';
 
@@ -48,7 +48,7 @@ export const Price = styled.View`
 
 export const Label = styled(Text)`
   font-family: ${typographies.exoSemiBold};
-  font-size: 12px;
+  font-size: 13px;
   text-transform: uppercase;
   padding-right: 10px;
   color: ${colors.grayLight};
@@ -69,5 +69,16 @@ export const Row = styled.View`
 export const StyledText = styled(Text)`
   font-weight: ${({ bold }) => (bold ? 'bold' : 'normal')};
   font-family: ${typographies.exoBold};
+  font-size: 16px;
   color: ${colors.grayMidnight};
+`;
+
+export const ButtonIcon = styled(Icon)`
+  font-size: ${({ fontSize }) => fontSize ?? 20}px;
+`;
+
+export const RemoveButton = styled.TouchableOpacity`
+  font-size: 20px;
+  position: absolute;
+  right: 0;
 `;

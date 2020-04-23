@@ -1,8 +1,9 @@
 import React from 'react';
-import { View } from 'react-native';
-import { CardItem, Text, Icon } from 'native-base';
+import { View, TouchableOpacity } from 'react-native';
+import { CardItem, Icon, Button } from 'native-base';
 
 import Counter from '../Counter';
+import Tag from '../Tag';
 
 import {
   StyledCard,
@@ -15,6 +16,8 @@ import {
   Label,
   Row,
   StyledText,
+  RemoveButton,
+  ButtonIcon,
 } from './styled';
 
 const AppCard = () => (
@@ -58,11 +61,20 @@ const AppCard = () => (
       </StyledBody>
     </CardItem>
     <CardItem bordered cardBody>
-      <Text>SKU 10940</Text>
-      <Text>suplementos</Text>
-      <Icon type="MaterialCommunityIcons" name="information-outline" />
-      <Icon type="MaterialCommunityIcons" name="clipboard-text-outline" />
-      <Icon type="MaterialCommunityIcons" name="trash-can-outline" />
+      <Tag color="black">SKU 10940</Tag>
+      <Tag color="green">suplementos</Tag>
+      <TouchableOpacity>
+        <ButtonIcon type="MaterialCommunityIcons" name="information-outline" />
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <ButtonIcon
+          type="MaterialCommunityIcons"
+          name="clipboard-text-outline"
+        />
+      </TouchableOpacity>
+      <RemoveButton>
+        <ButtonIcon type="MaterialCommunityIcons" name="trash-can-outline" />
+      </RemoveButton>
     </CardItem>
   </StyledCard>
 );
