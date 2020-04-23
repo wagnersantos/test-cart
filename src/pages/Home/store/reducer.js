@@ -12,7 +12,7 @@ export default handleActions(
   {
     [types.FETCH_PRODUCTS.SUCCESS]: (state, { payload }) => ({
       ...state,
-      posts: payload,
+      products: payload,
     }),
   },
   initialState,

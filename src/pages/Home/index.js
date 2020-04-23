@@ -9,8 +9,12 @@ import {
   Icon,
   CheckBox,
 } from 'native-base';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { AppHeader, Card } from 'components';
+
+import { selectors } from './store/reducer';
+import { actions } from './store/actions';
 
 import {
   StyledSearch,
@@ -23,6 +27,14 @@ import {
 } from './styled';
 
 export default function Home() {
+  const products = useSelector(state => selectors.getProducts(state));
+  const dispatch = useDispatch();
+  const getProducts = () => dispatch(actions.fetchProducts.request());
+
+  React.useEffect(() => {
+    getProducts();
+  }, []);
+
   return (
     <Container>
       <AppHeader title="produtos" />
