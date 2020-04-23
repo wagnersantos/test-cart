@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components/native';
-import { Card, CardItem, Text, Body, Icon, Button } from 'native-base';
+import { Card, Text, Body, Icon, Button } from 'native-base';
 
-import { colors, typographies } from 'core/assets/styles';
+import { colors, typographies, metrics } from 'core/assets/styles';
 
 import Tag from '../Tag';
 
@@ -15,7 +15,14 @@ export const Title = styled(Text)`
   color: ${colors.gray};
   margin: 5px 0;
   font-size: 15px;
-  width: 150px;
+  ${({ fullWidth }) =>
+    fullWidth
+      ? css`
+          max-width: 190px;
+        `
+      : css`
+          width: ${metrics.screenWidth - 70}px;
+        `}
 `;
 
 export const LastUnits = styled(Tag)`

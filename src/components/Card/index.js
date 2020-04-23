@@ -25,10 +25,14 @@ const AppCard = ({ products }) => {
   const isUnavailable = products.quantityAvailable === 0;
   const isLastUnits = products.quantityAvailable <= 10;
 
+  const fullWidth = isUnavailable || isLastUnits;
+
   return (
     <StyledCard>
       <CardItem bordered cardBody style={{ justifyContent: 'space-between' }}>
-        <Title numberOfLines={1}>{products.name}</Title>
+        <Title fullWidth={fullWidth} numberOfLines={1}>
+          {products.name}
+        </Title>
         {isUnavailable ? (
           <Tag color="black">sem estoque</Tag>
         ) : (
