@@ -2,6 +2,8 @@ import React from 'react';
 import { View } from 'react-native';
 import { CardItem, Text, Icon } from 'native-base';
 
+import Counter from '../Counter';
+
 import {
   StyledCard,
   Title,
@@ -46,7 +48,7 @@ const AppCard = () => (
             </Row>
           </View>
           <Row>
-            <Text>QUANT</Text>
+            <Counter />
           </Row>
           <Row>
             <Label>valor total: </Label>
