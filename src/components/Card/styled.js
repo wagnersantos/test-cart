@@ -44,8 +44,8 @@ export const Right = styled.View`
 export const StyledImage = styled.Image.attrs({
   resizeMode: 'stretch',
 })`
-  width: 125px;
-  height: 125px;
+  width: 90px;
+  height: 90px;
 `;
 
 export const Price = styled.View`
