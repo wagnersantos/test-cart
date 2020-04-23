@@ -47,7 +47,7 @@ const AppCard = () => (
               <StyledText>150 un</StyledText>
             </Row>
           </View>
-          <Row>
+          <Row margin={10}>
             <Counter />
           </Row>
           <Row>

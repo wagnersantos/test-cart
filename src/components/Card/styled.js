@@ -1,4 +1,4 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { Card, CardItem, Text, Body, Icon } from 'native-base';
 
 import { colors, typographies } from 'core/assets/styles';
@@ -59,6 +59,11 @@ export const Row = styled.View`
   align-items: center;
   justify-content: center;
   padding-bottom: 5px;
+  ${({ margin }) =>
+    margin &&
+    css`
+      margin: ${margin}px 0;
+    `};
 `;
 
 export const StyledText = styled(Text)`
