@@ -3,9 +3,10 @@ import { Card, CardItem, Text, Body, Icon, Button } from 'native-base';
 
 import { colors, typographies } from 'core/assets/styles';
 
+import Tag from '../Tag';
+
 export const StyledCard = styled(Card)`
   padding: 0 10px;
-  border-radius: 6px;
 `;
 
 export const Title = styled(Text)`
@@ -13,6 +14,11 @@ export const Title = styled(Text)`
   text-transform: uppercase;
   color: ${colors.gray};
   margin: 5px 0;
+  font-size: 15px;
+`;
+
+export const LastUnits = styled(Tag)`
+  border-radius: 30px;
 `;
 
 export const StyledBody = styled(Body)`

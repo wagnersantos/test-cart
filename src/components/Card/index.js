@@ -18,12 +18,14 @@ import {
   StyledText,
   RemoveButton,
   ButtonIcon,
+  LastUnits,
 } from './styled';
 
 const AppCard = () => (
   <StyledCard>
-    <CardItem bordered cardBody>
+    <CardItem bordered cardBody style={{ justifyContent: 'space-between' }}>
       <Title>3x protein po sac 300g</Title>
+      <LastUnits color="red">últimas unidades</LastUnits>
     </CardItem>
     <CardItem bordered cardBody>
       <StyledBody>
