@@ -27,7 +27,9 @@ export const StyledRight = styled.View`
   align-items: center;
 `;
 
-export const StyledCheckBox = styled(CheckBox)`
+export const StyledCheckBox = styled(CheckBox).attrs({
+  color: colors.black,
+})`
   margin-right: 15px;
   width: 15px;
   height: 15px;
