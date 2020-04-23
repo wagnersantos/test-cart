@@ -37,12 +37,11 @@ export const StyledBody = styled(Body)`
 `;
 
 export const Left = styled.View`
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 `;
 
 export const Right = styled.View`
-  flex: 1;
   justify-content: center;
   align-items: center;
   padding-right: 5px;
@@ -56,6 +55,7 @@ export const StyledImage = styled.Image.attrs({
 `;
 
 export const Price = styled.View`
+  flex: 1;
   flex-direction: row;
   align-items: center;
 `;

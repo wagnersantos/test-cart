@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
-import { CardItem, Icon, Button } from 'native-base';
+import { CardItem } from 'native-base';
 
 import Counter from '../Counter';
 import Tag from '../Tag';
