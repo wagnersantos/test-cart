@@ -11,9 +11,9 @@ export const makeRestartable = saga =>
           const status = get(error, 'response.status');
 
           if (status) {
-            console.tron.log(`http error ${status}`);
+            console.log(`http error ${status}`);
           } else {
-            console.tron.log(error);
+            console.log(error);
           }
         }
 
