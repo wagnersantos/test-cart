@@ -10,6 +10,10 @@ export const initialState = {
 
 export default handleActions(
   {
+    [types.UPDATE_LOADERS]: (state, { payload }) => ({
+      ...state,
+      loaders: { ...state.loaders, ...payload },
+    }),
     [types.FETCH_PRODUCTS.SUCCESS]: (state, { payload }) => ({
       ...state,
       products: payload,
