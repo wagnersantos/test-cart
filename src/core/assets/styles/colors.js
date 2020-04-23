@@ -6,5 +6,9 @@ export default {
 
   white: 'rgb(255,255,255)',
 
+  grayMidnight: 'rgb(111,111,111)',
+  gray: 'rgb(148,145,144)',
+  grayLight: 'rgb(199,197,196)',
+
   transparent: 'transparent',
 };

@@ -1,22 +1,68 @@
 import React from 'react';
-import { Card, CardItem, Text, Body } from 'native-base';
+import { View } from 'react-native';
+import { CardItem, Text, Icon } from 'native-base';
 
-// import { Container } from './styled';
+import {
+  StyledCard,
+  Title,
+  StyledBody,
+  Left,
+  Right,
+  StyledImage,
+  Price,
+  Label,
+  Row,
+  StyledText,
+} from './styled';
 
-const StyledCard = () => (
+const AppCard = () => (
   <StyledCard>
-    <CardItem header>
-      <Text>NativeBase</Text>
+    <CardItem bordered cardBody>
+      <Title>3x protein po sac 300g</Title>
     </CardItem>
-    <CardItem>
-      <Body>
-        <Text>//Your text here</Text>
-      </Body>
+    <CardItem bordered cardBody>
+      <StyledBody>
+        <Left>
+          <StyledImage
+            source={{
+              uri:
+                'https://www.drogariacatarinense.com.br/BACKOFFICE/Uploads/Produto/Normal/7908134200071-64961.jpg',
+            }}
+          />
+          <Price>
+            <StyledText bold>R$ </StyledText>
+            <StyledText bold>28,90</StyledText>
+          </Price>
+        </Left>
+        <Right>
+          <View>
+            <Row>
+              <Label>fabricante: </Label>
+              <StyledText>CIMED</StyledText>
+            </Row>
+            <Row>
+              <Label>estoque: </Label>
+              <StyledText>150 un</StyledText>
+            </Row>
+          </View>
+          <Row>
+            <Text>QUANT</Text>
+          </Row>
+          <Row>
+            <Label>valor total: </Label>
+            <StyledText bold>R$ 289,00</StyledText>
+          </Row>
+        </Right>
+      </StyledBody>
     </CardItem>
-    <CardItem footer>
-      <Text>GeekyAnts</Text>
+    <CardItem bordered cardBody>
+      <Text>SKU 10940</Text>
+      <Text>suplementos</Text>
+      <Icon type="MaterialCommunityIcons" name="information-outline" />
+      <Icon type="MaterialCommunityIcons" name="clipboard-text-outline" />
+      <Icon type="MaterialCommunityIcons" name="trash-can-outline" />
     </CardItem>
   </StyledCard>
 );
 
-export default StyledCard;
+export default AppCard;

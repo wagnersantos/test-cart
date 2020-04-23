@@ -10,7 +10,7 @@ import {
   CheckBox,
 } from 'native-base';
 
-import { AppHeader } from 'components';
+import { AppHeader, Card } from 'components';
 
 import {
   StyledSearch,
@@ -37,6 +37,8 @@ export default function Home() {
             <Icon type="MaterialCommunityIcons" name="chevron-down" />
           </StyledRight>
         </Wrapper>
+
+        <Card />
       </StyledContent>
     </Container>
   );
