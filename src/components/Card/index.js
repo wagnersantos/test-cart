@@ -2,6 +2,8 @@ import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { CardItem } from 'native-base';
 
+import { currency } from 'core/utils/currency';
+
 import Counter from '../Counter';
 import Tag from '../Tag';
 
@@ -49,7 +51,7 @@ const AppCard = ({ products }) => {
             />
             <Price>
               <StyledText bold>R$ </StyledText>
-              <StyledText bold>{products.price}</StyledText>
+              <StyledText bold>{currency(products.price)}</StyledText>
             </Price>
           </Left>
           <Right>
