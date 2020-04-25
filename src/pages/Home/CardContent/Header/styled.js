@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components/native';
 import { Text } from 'native-base';
 
-import Tag from '../../Tag';
+import { Tag } from 'components';
 
 import { colors, typographies, metrics } from 'core/assets/styles';
 

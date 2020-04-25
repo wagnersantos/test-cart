@@ -3,10 +3,12 @@ import { View } from 'react-native';
 import { Container, Text, Icon, List, Spinner } from 'native-base';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { AppHeader, Card } from 'components';
+import { AppHeader } from 'components';
 
 import { selectors } from './store/reducer';
 import { actions } from './store/actions';
+
+import CardContent from './CardContent';
 
 import {
   StyledSearch,
@@ -51,7 +53,7 @@ export default function Home() {
             <List
               keyExtractor={item => item.sku}
               dataArray={products}
-              renderRow={item => <Card products={item} />}
+              renderRow={item => <CardContent products={item} />}
             />
           </>
         )}
