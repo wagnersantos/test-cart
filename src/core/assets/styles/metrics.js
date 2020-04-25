@@ -7,5 +7,5 @@ export default {
   basePadding: 20,
   baseRadius: 3,
   screenWidth: width < height ? width : height,
-  screenHeight: width > height ? height : width,
+  screenHeight: width > height ? width : height,
 };

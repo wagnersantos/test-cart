@@ -1,9 +1,11 @@
-import React, { useCallback } from 'react';
-import { View } from 'react-native';
+import React, { useCallback, useState } from 'react';
+import { View, TouchableOpacity } from 'react-native';
 
 import { currency } from 'core/utils/currency';
 
-import { Counter } from 'components';
+import { Counter, Modal } from 'components';
+
+import ModalContent from './ModalContent';
 
 import {
   StyledBody,
@@ -17,6 +19,7 @@ import {
 } from './styled';
 
 const Body = ({ products, value }) => {
+  const [modalVisible, setModalVisible] = useState(false);
   const [
     actualValue,
     setActualValue,
@@ -40,11 +43,13 @@ const Body = ({ products, value }) => {
     <>
       <StyledBody>
         <Left>
-          <StyledImage
-            source={{
-              uri: products.imageURL,
-            }}
-          />
+          <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}>
+            <StyledImage
+              source={{
+                uri: products.imageURL,
+              }}
+            />
+          </TouchableOpacity>
           <Price>
             <StyledText bold>R$ </StyledText>
             <StyledText bold>{currency(products.price)}</StyledText>
@@ -79,6 +84,9 @@ const Body = ({ products, value }) => {
           </Row>
         </Right>
       </StyledBody>
+      <Modal modal={[modalVisible, setModalVisible]}>
+        <ModalContent products={products} />
+      </Modal>
     </>
   );
 };
