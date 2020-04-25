@@ -6,7 +6,13 @@ import { alertConfirm } from 'core/utils/alert';
 
 import { Container, StyledIcon, StyledItem, StyledInput } from './styled';
 
-const Counter = ({ callBack, disabled, actualValue, setActualValue }) => {
+const Counter = ({
+  callBack,
+  disabled,
+  actualValue,
+  setActualValue,
+  deleteCart,
+}) => {
   const [count, setCount] = useState(0);
   const inputColor = count === 0 ? 'grayLight' : 'grayMidnight';
 
@@ -24,6 +30,7 @@ const Counter = ({ callBack, disabled, actualValue, setActualValue }) => {
 
     const confirm = () => {
       onChangeText(decrement, isClick);
+      deleteCart();
     };
 
     if (decrement >= 1) {

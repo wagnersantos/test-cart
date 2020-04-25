@@ -25,7 +25,6 @@ export default function Home() {
 
   const dispatch = useDispatch();
   const getProducts = () => dispatch(actions.fetchProducts.request());
-
   React.useEffect(() => {
     getProducts();
   }, []);

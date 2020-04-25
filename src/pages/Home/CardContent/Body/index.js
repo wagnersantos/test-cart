@@ -1,12 +1,9 @@
 import React, { useCallback } from 'react';
 import { View } from 'react-native';
-import { useDispatch } from 'react-redux';
 
 import { currency } from 'core/utils/currency';
 
 import { Counter } from 'components';
-
-import { actions as actionsCart } from 'pages/Cart/store/actions';
 
 import {
   StyledBody,
@@ -20,10 +17,14 @@ import {
 } from './styled';
 
 const Body = ({ products, value }) => {
-  const [actualValue, setActualValue, total, setTotal] = value;
-
-  const dispatch = useDispatch();
-  const addCart = payload => dispatch(actionsCart.addCart.request(payload));
+  const [
+    actualValue,
+    setActualValue,
+    total,
+    setTotal,
+    addCart,
+    deleteCart,
+  ] = value;
 
   const handleCounter = useCallback(count => {
     const quantity = Number(count);
@@ -32,7 +33,7 @@ const Body = ({ products, value }) => {
     const value = Number(price) * quantity;
     setTotal(value);
 
-    addCart({ quantity, sku });
+    count > 0 && addCart({ quantity, sku });
   }, []);
 
   return (
@@ -65,6 +66,7 @@ const Body = ({ products, value }) => {
               callBack={count => handleCounter(count)}
               actualValue={actualValue}
               setActualValue={setActualValue}
+              deleteCart={() => deleteCart(products.sku)}
             />
           </Row>
           <Row>
