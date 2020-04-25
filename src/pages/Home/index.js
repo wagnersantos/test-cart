@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import { Container, Text, Icon, List, Spinner } from 'native-base';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -20,14 +20,27 @@ import {
 } from './styled';
 
 export default function Home() {
+  const [indexVisible, setIndexVisible] = useState(1);
+
   const loaders = useSelector(state => selectors.getLoaders(state));
   const products = useSelector(state => selectors.getProducts(state));
+
+  const quantityProducts = products.length;
+  const results = `Mostrando ${indexVisible} de ${quantityProducts} produtos`;
 
   const dispatch = useDispatch();
   const getProducts = () => dispatch(actions.fetchProducts.request());
   React.useEffect(() => {
     getProducts();
   }, []);
+
+  const onViewableItemsChanged = useCallback(({ viewableItems }) => {
+    setIndexVisible(viewableItems[0].index + 1);
+  }, []);
+
+  const itemVisiblePercentThreshold = {
+    itemVisiblePercentThreshold: quantityProducts,
+  };
 
   return (
     <Container>
@@ -48,8 +61,10 @@ export default function Home() {
                 <Icon type="MaterialCommunityIcons" name="chevron-down" />
               </StyledRight>
             </Wrapper>
-            <Results>Mostrando 2 de 320 produtos</Results>
+            <Results>{results}</Results>
             <List
+              onViewableItemsChanged={onViewableItemsChanged}
+              viewabilityConfig={itemVisiblePercentThreshold}
               keyExtractor={item => item.sku}
               dataArray={products}
               renderRow={item => <CardContent products={item} />}
