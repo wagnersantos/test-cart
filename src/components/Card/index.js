@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { TouchableOpacity, Alert } from 'react-native';
-import { CardItem } from 'native-base';
-
-import Tag from '../Tag';
+import { Alert } from 'react-native';
 
 import CardHeader from './CardHeader';
 import CardBody from './CardBody';
+import CardFooter from './CardFooter';
 
-import { StyledCard, RemoveButton, ButtonIcon } from './styled';
+import { StyledCard } from './styled';
 
 const AppCard = ({ products }) => {
   const [actualValue, setActualValue] = useState('0 un');
@@ -45,30 +43,7 @@ const AppCard = ({ products }) => {
         value={[actualValue, setActualValue, total, setTotal]}
       />
 
-      <CardItem bordered cardBody>
-        <Tag color="black">{`sku ${products.sku}`}</Tag>
-        <Tag color="green">{products.category}</Tag>
-        <TouchableOpacity>
-          <ButtonIcon
-            type="MaterialCommunityIcons"
-            name="information-outline"
-          />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <ButtonIcon
-            type="MaterialCommunityIcons"
-            name="clipboard-text-outline"
-          />
-        </TouchableOpacity>
-        {isVisibleRemove && (
-          <RemoveButton onPress={removeCart}>
-            <ButtonIcon
-              type="MaterialCommunityIcons"
-              name="trash-can-outline"
-            />
-          </RemoveButton>
-        )}
-      </CardItem>
+      <CardFooter products={products} value={[removeCart, isVisibleRemove]} />
     </StyledCard>
   );
 };

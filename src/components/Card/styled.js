@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components/native';
-import { Card, Text, Body, Icon } from 'native-base';
-
-import { colors, typographies } from 'core/assets/styles';
+import { Card } from 'native-base';
 
 export const StyledCard = styled(Card)`
   padding: 0 10px;
@@ -17,8 +15,4 @@ export const Row = styled.View`
     css`
       margin: ${margin}px 0;
     `};
-`;
-
-export const ButtonIcon = styled(Icon)`
-  font-size: ${({ fontSize }) => fontSize ?? 20}px;
 `;

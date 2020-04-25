@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components/native';
-import { Text, Body, Icon } from 'native-base';
+import { Text, Body } from 'native-base';
 
 import { colors, typographies } from 'core/assets/styles';
 
@@ -59,14 +59,4 @@ export const Label = styled(Text)`
   text-transform: uppercase;
   padding-right: 10px;
   color: ${colors.grayLight};
-`;
-
-export const ButtonIcon = styled(Icon)`
-  font-size: ${({ fontSize }) => fontSize ?? 20}px;
-`;
-
-export const RemoveButton = styled.TouchableOpacity`
-  font-size: 20px;
-  position: absolute;
-  right: 0;
 `;
