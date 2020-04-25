@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { CardItem } from 'native-base';
 
@@ -24,10 +24,17 @@ import {
 } from './styled';
 
 const AppCard = ({ products }) => {
+  const [total, setTotal] = useState(0);
+
   const isUnavailable = products.quantityAvailable === 0;
   const isLastUnits = products.quantityAvailable <= 10;
 
   const fullWidth = isUnavailable || isLastUnits;
+
+  const handleCounter = useCallback(count => {
+    const value = products.price * count;
+    setTotal(value);
+  }, []);
 
   return (
     <StyledCard>
@@ -41,6 +48,7 @@ const AppCard = ({ products }) => {
           isLastUnits && <LastUnits color="red">últimas unidades</LastUnits>
         )}
       </CardItem>
+
       <CardItem bordered cardBody>
         <StyledBody>
           <Left>
@@ -66,15 +74,20 @@ const AppCard = ({ products }) => {
               </Row>
             </View>
             <Row margin={10}>
-              <Counter />
+              <Counter callBack={count => handleCounter(count)} />
             </Row>
             <Row>
-              <Label>valor total: </Label>
-              <StyledText bold>R$ 289,00</StyledText>
+              {!!total && (
+                <>
+                  <Label>valor total: </Label>
+                  <StyledText bold>{`R$ ${currency(total)}`}</StyledText>
+                </>
+              )}
             </Row>
           </Right>
         </StyledBody>
       </CardItem>
+
       <CardItem bordered cardBody>
         <Tag color="black">{`sku ${products.sku}`}</Tag>
         <Tag color="green">{products.category}</Tag>

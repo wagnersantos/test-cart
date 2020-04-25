@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { TouchableOpacity } from 'react-native';
-import { Item, Input } from 'native-base';
+import React, { useState } from 'react';
+import { TouchableOpacity, Alert } from 'react-native';
 import PropTypes from 'prop-types';
 
-import { colors } from 'core/assets/styles';
 import { Container, StyledIcon, StyledItem, StyledInput } from './styled';
 
 const Counter = ({ callBack, initialValue, disabled }) => {
   const [count, setCount] = useState(initialValue);
+  const [actualValue, setActualValue] = useState(formatValue);
+
+  const formatValue = `${String(count)} un`;
+  const inputColor = count === 0 ? 'grayLight' : 'grayMidnight';
+
   const incrementCount = () => {
     const increment = count + 1;
     setCount(increment);
@@ -21,6 +24,39 @@ const Counter = ({ callBack, initialValue, disabled }) => {
       setCount(decrement);
       callBack(decrement);
     }
+
+    if (decrement === 0) {
+      Alert.alert(
+        '',
+        'Deseja remover do carrinho ?',
+        [
+          {
+            text: 'Cancel',
+            onPress: () => {},
+            style: 'cancel',
+          },
+          {
+            text: 'OK',
+            onPress: () => {
+              setCount(decrement);
+              callBack(decrement);
+            },
+          },
+        ],
+        { cancelable: false },
+      );
+    }
+  };
+
+  const onChangeText = e => {
+    setCount(e);
+    setActualValue(e);
+    callBack(e);
+  };
+
+  const onFocus = () => {
+    const unformat = actualValue?.replace('un', '');
+    !unformat ? setActualValue('') : setActualValue(unformat);
   };
 
   return (
@@ -39,9 +75,13 @@ const Counter = ({ callBack, initialValue, disabled }) => {
       </TouchableOpacity>
       <StyledItem>
         <StyledInput
-          onChangeText={() => {}}
-          value={`${String(count)} un`}
-          color={count === 0 ? 'grayLight' : 'grayMidnight'}
+          ref={input => (input = input)}
+          onChangeText={onChangeText}
+          defaultValue={formatValue}
+          value={actualValue}
+          color={inputColor}
+          onFocus={onFocus}
+          onBlur={() => setActualValue(formatValue)}
         />
       </StyledItem>
       <TouchableOpacity

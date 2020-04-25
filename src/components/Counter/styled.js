@@ -23,6 +23,7 @@ export const StyledItem = styled(Item)`
   width: 70px;
   height: 25px;
   margin: 7px;
+  position: relative;
 `;
 
 export const StyledInput = styled(Input)`
