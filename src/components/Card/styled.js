@@ -47,6 +47,18 @@ export const Right = styled.View`
   padding-right: 5px;
 `;
 
+export const Row = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 5px;
+  ${({ margin }) =>
+    margin &&
+    css`
+      margin: ${margin}px 0;
+    `};
+`;
+
 export const StyledImage = styled.Image.attrs({
   resizeMode: 'stretch',
 })`
@@ -66,18 +78,6 @@ export const Label = styled(Text)`
   text-transform: uppercase;
   padding-right: 10px;
   color: ${colors.grayLight};
-`;
-
-export const Row = styled.View`
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 5px;
-  ${({ margin }) =>
-    margin &&
-    css`
-      margin: ${margin}px 0;
-    `};
 `;
 
 export const StyledText = styled(Text)`

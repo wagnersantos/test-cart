@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity, Alert } from 'react-native';
 import { CardItem } from 'native-base';
 
 import { currency } from 'core/utils/currency';
@@ -24,6 +24,7 @@ import {
 } from './styled';
 
 const AppCard = ({ products }) => {
+  const [actualValue, setActualValue] = useState('0 un');
   const [total, setTotal] = useState(0);
 
   const isUnavailable = products.quantityAvailable === 0;
@@ -33,9 +34,31 @@ const AppCard = ({ products }) => {
   const fullWidth = isUnavailable || isLastUnits;
 
   const handleCounter = useCallback(count => {
-    const value = products.price * count;
+    const value = Number(products.price) * Number(count);
     setTotal(value);
   }, []);
+
+  const removeCart = () => {
+    Alert.alert(
+      '',
+      'Deseja remover do carrinho ?',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => {},
+          style: 'cancel',
+        },
+        {
+          text: 'OK',
+          onPress: () => {
+            setActualValue('0 un');
+            setTotal(0);
+          },
+        },
+      ],
+      { cancelable: false },
+    );
+  };
 
   return (
     <StyledCard>
@@ -75,7 +98,11 @@ const AppCard = ({ products }) => {
               </Row>
             </View>
             <Row margin={10}>
-              <Counter callBack={count => handleCounter(count)} />
+              <Counter
+                callBack={count => handleCounter(count)}
+                actualValue={actualValue}
+                setActualValue={setActualValue}
+              />
             </Row>
             <Row>
               {!!total && (
@@ -105,7 +132,7 @@ const AppCard = ({ products }) => {
           />
         </TouchableOpacity>
         {isVisibleRemove && (
-          <RemoveButton>
+          <RemoveButton onPress={removeCart}>
             <ButtonIcon
               type="MaterialCommunityIcons"
               name="trash-can-outline"

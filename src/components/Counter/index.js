@@ -4,25 +4,25 @@ import PropTypes from 'prop-types';
 
 import { Container, StyledIcon, StyledItem, StyledInput } from './styled';
 
-const Counter = ({ callBack, initialValue, disabled }) => {
-  const [count, setCount] = useState(initialValue);
-  const [actualValue, setActualValue] = useState(formatValue);
-
-  const formatValue = `${String(count)} un`;
+const Counter = ({ callBack, disabled, actualValue, setActualValue }) => {
+  const [count, setCount] = useState(0);
   const inputColor = count === 0 ? 'grayLight' : 'grayMidnight';
 
+  const formatValue = (val = count) => `${String(val)} un`;
+
   const incrementCount = () => {
-    const increment = count + 1;
-    setCount(increment);
-    callBack(increment);
+    const isClick = true;
+    const increment = Number(count) + 1;
+    onChangeText(increment, isClick);
   };
 
   const decrementCount = () => {
-    const decrement = count - 1;
+    const isClick = true;
+
+    const decrement = Number(count) - 1;
 
     if (decrement >= 1) {
-      setCount(decrement);
-      callBack(decrement);
+      onChangeText(decrement, isClick);
     }
 
     if (decrement === 0) {
@@ -38,8 +38,7 @@ const Counter = ({ callBack, initialValue, disabled }) => {
           {
             text: 'OK',
             onPress: () => {
-              setCount(decrement);
-              callBack(decrement);
+              onChangeText(decrement, isClick);
             },
           },
         ],
@@ -48,16 +47,30 @@ const Counter = ({ callBack, initialValue, disabled }) => {
     }
   };
 
-  const onChangeText = e => {
+  const onChangeText = (e, isClick) => {
     setCount(e);
-    setActualValue(e);
     callBack(e);
+    if (isClick) {
+      setActualValue(formatValue(e));
+      return;
+    }
+
+    setActualValue(e);
   };
 
   const onFocus = () => {
-    const unformat = actualValue?.replace('un', '');
-    !unformat ? setActualValue('') : setActualValue(unformat);
+    const unformat = actualValue
+      ?.toString()
+      .replace('un', '')
+      .trim();
+    unformat === '0' ? setActualValue('') : setActualValue(unformat);
   };
+
+  React.useEffect(() => {
+    if (actualValue === '0 un') {
+      setCount(0);
+    }
+  }, [actualValue]);
 
   return (
     <Container>
@@ -75,13 +88,12 @@ const Counter = ({ callBack, initialValue, disabled }) => {
       </TouchableOpacity>
       <StyledItem>
         <StyledInput
-          ref={input => (input = input)}
           onChangeText={onChangeText}
-          defaultValue={formatValue}
+          defaultValue={formatValue()}
           value={actualValue}
           color={inputColor}
           onFocus={onFocus}
-          onBlur={() => setActualValue(formatValue)}
+          onBlur={() => setActualValue(formatValue())}
         />
       </StyledItem>
       <TouchableOpacity
@@ -102,14 +114,14 @@ const Counter = ({ callBack, initialValue, disabled }) => {
 
 Counter.defaultProps = {
   callBack: () => {},
-  initialValue: 0,
   disabled: false,
+  setActualValue: () => {},
 };
 
 Counter.propTypes = {
   callBack: PropTypes.func,
-  initialValue: PropTypes.number,
   disabled: PropTypes.bool,
+  setActualValue: PropTypes.func,
 };
 
 export default Counter;
