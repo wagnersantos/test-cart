@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { TouchableOpacity, Alert } from 'react-native';
 import PropTypes from 'prop-types';
 
+import { alertConfirm } from 'core/utils/alert';
+
 import { Container, StyledIcon, StyledItem, StyledInput } from './styled';
 
 const Counter = ({ callBack, disabled, actualValue, setActualValue }) => {
@@ -18,32 +20,18 @@ const Counter = ({ callBack, disabled, actualValue, setActualValue }) => {
 
   const decrementCount = () => {
     const isClick = true;
-
     const decrement = Number(count) - 1;
+
+    const confirm = () => {
+      onChangeText(decrement, isClick);
+    };
 
     if (decrement >= 1) {
       onChangeText(decrement, isClick);
     }
 
     if (decrement === 0) {
-      Alert.alert(
-        '',
-        'Deseja remover do carrinho ?',
-        [
-          {
-            text: 'Cancel',
-            onPress: () => {},
-            style: 'cancel',
-          },
-          {
-            text: 'OK',
-            onPress: () => {
-              onChangeText(decrement, isClick);
-            },
-          },
-        ],
-        { cancelable: false },
-      );
+      alertConfirm({ confirm });
     }
   };
 

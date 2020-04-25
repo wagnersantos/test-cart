@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Alert } from 'react-native';
 
 import CardHeader from './CardHeader';
 import CardBody from './CardBody';
 import CardFooter from './CardFooter';
+
+import { alertConfirm } from 'core/utils/alert';
 
 import { StyledCard } from './styled';
 
@@ -12,26 +13,13 @@ const AppCard = ({ products }) => {
   const [total, setTotal] = useState(0);
   const isVisibleRemove = total > 0;
 
+  const confirm = () => {
+    setActualValue('0 un');
+    setTotal(0);
+  };
+
   const removeCart = () => {
-    Alert.alert(
-      '',
-      'Deseja remover do carrinho ?',
-      [
-        {
-          text: 'Cancel',
-          onPress: () => {},
-          style: 'cancel',
-        },
-        {
-          text: 'OK',
-          onPress: () => {
-            setActualValue('0 un');
-            setTotal(0);
-          },
-        },
-      ],
-      { cancelable: false },
-    );
+    alertConfirm({ confirm });
   };
 
   return (
