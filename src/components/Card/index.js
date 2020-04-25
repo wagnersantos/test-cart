@@ -7,6 +7,8 @@ import { currency } from 'core/utils/currency';
 import Counter from '../Counter';
 import Tag from '../Tag';
 
+import CardHeader from './CardHeader';
+
 import {
   StyledCard,
   Title,
@@ -27,11 +29,7 @@ const AppCard = ({ products }) => {
   const [actualValue, setActualValue] = useState('0 un');
   const [total, setTotal] = useState(0);
 
-  const isUnavailable = products.quantityAvailable === 0;
-  const isLastUnits = products.quantityAvailable <= 10;
   const isVisibleRemove = total > 0;
-
-  const fullWidth = isUnavailable || isLastUnits;
 
   const handleCounter = useCallback(count => {
     const value = Number(products.price) * Number(count);
@@ -62,16 +60,7 @@ const AppCard = ({ products }) => {
 
   return (
     <StyledCard>
-      <CardItem bordered cardBody style={{ justifyContent: 'space-between' }}>
-        <Title fullWidth={fullWidth} numberOfLines={1}>
-          {products.name}
-        </Title>
-        {isUnavailable ? (
-          <Tag color="black">sem estoque</Tag>
-        ) : (
-          isLastUnits && <LastUnits color="red">últimas unidades</LastUnits>
-        )}
-      </CardItem>
+      <CardHeader products={products} />
 
       <CardItem bordered cardBody>
         <StyledBody>
