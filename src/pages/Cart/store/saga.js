@@ -5,11 +5,13 @@ import { actions, types } from './actions';
 
 const typeProducts = 'cart';
 
-export function* addCart() {
+export function* addCart({ payload }) {
   try {
     yield put(actions.updateLoaders({ itemsCartList: true }));
     const product = yield call(Providers.service, {
+      method: 'POST',
       path: `/${typeProducts}/add`,
+      params: payload,
     });
 
     // yield put(actions.addCart.receive(product));

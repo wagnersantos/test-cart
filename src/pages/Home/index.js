@@ -1,5 +1,4 @@
 import React from 'react';
-import { View } from 'react-native';
 import { Container, Text, Icon, List, Spinner } from 'native-base';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -23,6 +22,7 @@ import {
 export default function Home() {
   const loaders = useSelector(state => selectors.getLoaders(state));
   const products = useSelector(state => selectors.getProducts(state));
+
   const dispatch = useDispatch();
   const getProducts = () => dispatch(actions.fetchProducts.request());
 
