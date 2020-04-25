@@ -28,6 +28,7 @@ const AppCard = ({ products }) => {
 
   const isUnavailable = products.quantityAvailable === 0;
   const isLastUnits = products.quantityAvailable <= 10;
+  const isVisibleRemove = total > 0;
 
   const fullWidth = isUnavailable || isLastUnits;
 
@@ -103,9 +104,14 @@ const AppCard = ({ products }) => {
             name="clipboard-text-outline"
           />
         </TouchableOpacity>
-        <RemoveButton>
-          <ButtonIcon type="MaterialCommunityIcons" name="trash-can-outline" />
-        </RemoveButton>
+        {isVisibleRemove && (
+          <RemoveButton>
+            <ButtonIcon
+              type="MaterialCommunityIcons"
+              name="trash-can-outline"
+            />
+          </RemoveButton>
+        )}
       </CardItem>
     </StyledCard>
   );
