@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TouchableOpacity, Alert } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 
 import { alertConfirm } from 'core/utils/alert';
@@ -110,13 +110,17 @@ const Counter = ({
 Counter.defaultProps = {
   callBack: () => {},
   disabled: false,
+  actualValue: '',
   setActualValue: () => {},
+  deleteCart: () => {},
 };
 
 Counter.propTypes = {
   callBack: PropTypes.func,
   disabled: PropTypes.bool,
+  actualValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   setActualValue: PropTypes.func,
+  deleteCart: PropTypes.func,
 };
 
 export default Counter;

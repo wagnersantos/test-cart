@@ -48,7 +48,9 @@
     "react-native/sort-styles": "off",
     "global-require": "off",
     "react-native/no-raw-text": "off",
-    "import/no-cycle": "off"
+    "import/no-cycle": "off",
+    "no-unused-expressions": "off",
+    "no-use-before-define": "off"
   },
   "settings": {
     "import/resolver": {
