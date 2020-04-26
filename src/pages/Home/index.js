@@ -1,13 +1,14 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useCallback } from 'react';
 import { Container, List, Spinner } from 'native-base';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { AppHeader } from 'components';
 
-import { selectors } from './store/reducer';
-import { actions } from './store/actions';
 import { selectors as selectorsCart } from 'pages/Cart/store/reducer';
 import { actions as actionsCart } from 'pages/Cart/store/actions';
+import { selectors } from './store/reducer';
+import { actions } from './store/actions';
 
 import CardContent from './CardContent';
 import SearchLine from './SearchLine';
