@@ -12,7 +12,7 @@ export const Container = styled.View`
 
 export const Label = styled.Text`
   font-family: ${typographies.exoSemiBold};
-  color: white;
+  color: ${({ colorText }) => colors[colorText]};
   text-transform: uppercase;
   font-size: 9px;
 `;

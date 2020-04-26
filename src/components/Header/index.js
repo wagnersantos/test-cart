@@ -1,4 +1,5 @@
 import React from 'react';
+import { TouchableOpacity } from 'react-native';
 import { Left, Body, Right, Button } from 'native-base';
 import PropTypes from 'prop-types';
 import { Actions } from 'react-native-router-flux';
@@ -21,21 +22,24 @@ const AppHeader = ({ title, total }) => {
         <StyledTitle>{title}</StyledTitle>
       </Body>
       <Right style={{ flex: 1 }}>
-        <Button transparent onPress={() => goToPage('home')}>
+        <TouchableOpacity
+          onPress={() => goToPage('home')}
+          style={{ marginRight: 10 }}
+        >
           <StyledIcon
             type="MaterialCommunityIcons"
             name="home-plus"
             fontSize="30"
           />
-        </Button>
-        <Button transparent onPress={() => goToPage('cart')}>
-          <StyledIcon
-            type="MaterialCommunityIcons"
-            name="cart-outline"
-            fontSize="24"
-          />
-          <StyledBadge>{total}</StyledBadge>
-        </Button>
+        </TouchableOpacity>
+        <TouchableOpacity
+          transparent
+          onPress={() => goToPage('cart')}
+          style={{ marginRight: 10 }}
+        >
+          <StyledIcon type="MaterialCommunityIcons" name="cart" fontSize="24" />
+        </TouchableOpacity>
+        <StyledBadge colorText="black">{total}</StyledBadge>
       </Right>
     </StyledHeader>
   );
