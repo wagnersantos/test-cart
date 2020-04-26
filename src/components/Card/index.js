@@ -6,8 +6,8 @@ import CardFooter from './CardFooter';
 
 import { StyledCard } from './styled';
 
-const Card = ({ children }) => {
-  return <StyledCard>{children}</StyledCard>;
+const Card = ({ children, ...rest }) => {
+  return <StyledCard {...rest}>{children}</StyledCard>;
 };
 
 Card.Header = CardHeader;
