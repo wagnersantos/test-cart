@@ -14,10 +14,15 @@ export default handleActions(
       ...state,
       loaders: { ...state.loaders, ...payload },
     }),
+    [types.FETCH_CART.SUCCESS]: (state, { payload }) => ({
+      ...state,
+      itemsCart: payload,
+    }),
   },
   initialState,
 );
 
 export const selectors = {
   getLoaders: state => state.cart.loaders,
+  getCart: state => state.cart.itemsCart,
 };

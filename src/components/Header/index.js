@@ -6,7 +6,7 @@ import { Actions } from 'react-native-router-flux';
 import Bar from '../StatusBar';
 import { StyledHeader, StyledIcon, StyledTitle, StyledBadge } from './styled';
 
-const AppHeader = ({ title }) => {
+const AppHeader = ({ title, total }) => {
   const goToPage = page => Actions.jump(page);
 
   return (
@@ -34,7 +34,7 @@ const AppHeader = ({ title }) => {
             name="cart-outline"
             fontSize="24"
           />
-          <StyledBadge>12</StyledBadge>
+          <StyledBadge>{total}</StyledBadge>
         </Button>
       </Right>
     </StyledHeader>
@@ -43,6 +43,7 @@ const AppHeader = ({ title }) => {
 
 AppHeader.propTypes = {
   title: PropTypes.string.isRequired,
+  total: PropTypes.number.isRequired,
 };
 
 export default AppHeader;

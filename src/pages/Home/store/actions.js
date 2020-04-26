@@ -6,8 +6,8 @@ import {
 } from 'core/utils/reduxAsync';
 
 export const types = {
-  UPDATE_LOADERS: createType('posts', 'UPDATE_LOADERS'),
-  FETCH_PRODUCTS: createAsyncTypes('posts', 'FETCH_PRODUCTS'),
+  UPDATE_LOADERS: createType('products', 'UPDATE_LOADERS'),
+  FETCH_PRODUCTS: createAsyncTypes('products', 'FETCH_PRODUCTS'),
 };
 
 export const actions = {

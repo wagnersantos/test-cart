@@ -6,6 +6,8 @@ import { AppHeader } from 'components';
 
 import { selectors } from './store/reducer';
 import { actions } from './store/actions';
+import { selectors as selectorsCart } from 'pages/Cart/store/reducer';
+import { actions as actionsCart } from 'pages/Cart/store/actions';
 
 import CardContent from './CardContent';
 
@@ -24,14 +26,19 @@ export default function Home() {
 
   const loaders = useSelector(state => selectors.getLoaders(state));
   const products = useSelector(state => selectors.getProducts(state));
-
-  const quantityProducts = products.length;
-  const results = `Mostrando ${indexVisible} de ${quantityProducts} produtos`;
+  const cart = useSelector(state => selectorsCart.getCart(state));
 
   const dispatch = useDispatch();
   const getProducts = () => dispatch(actions.fetchProducts.request());
+  const getCart = () => dispatch(actionsCart.fetchCart.request());
+
+  const quantityProducts = products.length;
+  const results = `Mostrando ${indexVisible} de ${quantityProducts} produtos`;
+  const totalCart = cart?.items?.length || 0;
+
   React.useEffect(() => {
     getProducts();
+    getCart();
   }, []);
 
   const onViewableItemsChanged = useCallback(({ viewableItems }) => {
@@ -44,7 +51,7 @@ export default function Home() {
 
   return (
     <Container>
-      <AppHeader title="produtos" />
+      <AppHeader title="produtos" total={totalCart} />
 
       <StyledContent>
         {loaders.productsList && !products.length ? (
