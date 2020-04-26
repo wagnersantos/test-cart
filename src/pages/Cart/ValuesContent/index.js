@@ -3,7 +3,7 @@ import React from 'react';
 import { Content, Label, Price, Cents } from './styled';
 
 const ValuesContent = ({ cart, sum }) => {
-  const [price, cents] = sum.toString().split('.');
+  const [price = 0, cents = '00'] = sum.toString().split('.');
 
   return (
     <Content>

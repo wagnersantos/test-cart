@@ -15,7 +15,7 @@ import {
 } from './styled';
 
 const ProductsContent = ({ cart, total }) => {
-  const more = total - 2 || 0;
+  const more = total > 0 ? total - 2 : 0;
 
   return (
     <>
@@ -35,10 +35,12 @@ const ProductsContent = ({ cart, total }) => {
         }
       })}
 
-      <FooterContent>
-        <Title>{`+ ${more} produtos`}</Title>
-        <Tag color="green">ver todos</Tag>
-      </FooterContent>
+      {!!more && (
+        <FooterContent>
+          <Title>{`+ ${more} produtos`}</Title>
+          <Tag color="green">ver todos</Tag>
+        </FooterContent>
+      )}
     </>
   );
 };
