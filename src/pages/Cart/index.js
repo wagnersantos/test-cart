@@ -1,15 +1,14 @@
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { useSelector } from 'react-redux';
-import { Container, Text, Icon } from 'native-base';
+import { Container } from 'native-base';
 
 import { selectors } from './store/reducer';
 
-import { AppHeader, Tag } from 'components';
+import { AppHeader } from 'components';
 
 import CardContent from './CardContent';
-
-import { currency } from 'core/utils/currency';
+import ProductsContent from './ProductsContent';
 
 import {
   StyledContent,
@@ -17,13 +16,6 @@ import {
   Label,
   Price,
   Cents,
-  Title,
-  ProductsContent,
-  Quantity,
-  PPrice,
-  Left,
-  Right,
-  FooterContent,
   Bottom,
   Error,
   InfoMain,
@@ -42,28 +34,7 @@ export default function Cart() {
       <AppHeader title="carrinho" total={totalCart} />
       <StyledContent>
         <CardContent title="produtos">
-          <ProductsContent>
-            <Left>
-              <Title numberOfLines={1}>{cart.items[0].product.name}</Title>
-            </Left>
-            <Right>
-              <Quantity>{cart.items[0].quantity} un</Quantity>
-              <PPrice>R$ {currency(cart.items[0].product.price)}</PPrice>
-            </Right>
-          </ProductsContent>
-          <ProductsContent>
-            <Left>
-              <Title numberOfLines={1}>{cart.items[0].product.name}</Title>
-            </Left>
-            <Right>
-              <Quantity>{cart.items[0].quantity} un</Quantity>
-              <PPrice>R$ {currency(cart.items[0].product.price)}</PPrice>
-            </Right>
-          </ProductsContent>
-          <FooterContent>
-            <Title>+ 10 produtos</Title>
-            <Tag color="green">ver todos</Tag>
-          </FooterContent>
+          <ProductsContent cart={cart} total={totalCart} />
         </CardContent>
 
         <CardContent title="valores totais">
