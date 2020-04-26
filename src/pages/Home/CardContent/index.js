@@ -21,13 +21,13 @@ const CardContent = ({ products }) => {
   const deleteCart = sku => dispatch(actionsCart.deleteCart.request(sku));
 
   const confirm = () => {
+    deleteCart(products.sku);
     setActualValue('0 un');
     setTotal(0);
   };
 
   const removeCart = () => {
     alertConfirm({ confirm });
-    deleteCart(products.sku);
   };
 
   return (
