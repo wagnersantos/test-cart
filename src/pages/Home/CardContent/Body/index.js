@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { View, TouchableOpacity } from 'react-native';
+import debounce from 'lodash/debounce';
 
 import { currency } from 'core/utils/currency';
 
@@ -29,15 +30,18 @@ const Body = ({ products, value }) => {
     deleteCart,
   ] = value;
 
-  const handleCounter = useCallback(count => {
-    const quantity = Number(count);
-    const { price, sku } = products;
+  const handleCounter = debounce(
+    useCallback(count => {
+      const quantity = Number(count);
+      const { price, sku } = products;
 
-    const value = Number(price) * quantity;
-    setTotal(value);
+      const value = Number(price) * quantity;
+      setTotal(value);
 
-    count > 0 && addCart({ quantity, sku });
-  }, []);
+      count > 0 && addCart({ quantity, sku });
+    }, []),
+    300,
+  );
 
   return (
     <>
