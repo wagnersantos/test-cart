@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { CardItem } from 'native-base';
 
 const CardFooter = ({ children, ...rest }) => (
@@ -6,5 +7,9 @@ const CardFooter = ({ children, ...rest }) => (
     {children}
   </CardItem>
 );
+
+CardFooter.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default CardFooter;
