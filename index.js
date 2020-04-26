@@ -1,7 +1,8 @@
 import { AppRegistry } from 'react-native';
 import { name as appName } from './app.json';
 
-require('react-native').unstable_enableLogBox();
-const App = require('./src/index');
+// const App = require('./src');
+// require('react-native').unstable_enableLogBox();
+import App from '.';
 
 AppRegistry.registerComponent(appName, () => App);
