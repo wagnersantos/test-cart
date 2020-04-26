@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { currency } from 'core/utils/currency';
 
@@ -44,4 +45,10 @@ const ProductsContent = ({ cart, total }) => {
     </>
   );
 };
+
+ProductsContent.propTypes = {
+  cart: PropTypes.instanceOf(Object).isRequired,
+  total: PropTypes.number.isRequired,
+};
+
 export default ProductsContent;

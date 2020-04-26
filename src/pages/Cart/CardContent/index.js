@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Card } from 'components';
 
@@ -12,5 +13,10 @@ const CardContent = ({ title, children }) => (
     <StyledBody>{children}</StyledBody>
   </StyledCard>
 );
+
+CardContent.propTypes = {
+  title: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
 
 export default CardContent;

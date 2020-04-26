@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { currency } from 'core/utils/currency';
 
@@ -42,6 +43,11 @@ const BottomContent = ({ sum, removeAllCart }) => {
       </StyledButton>
     </>
   );
+};
+
+BottomContent.propTypes = {
+  sum: PropTypes.number.isRequired,
+  removeAllCart: PropTypes.func.isRequired,
 };
 
 export default BottomContent;

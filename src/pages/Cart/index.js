@@ -1,11 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Container } from 'native-base';
 
+import { AppHeader } from 'components';
 import { actions } from './store/actions';
 import { selectors } from './store/reducer';
-
-import { AppHeader } from 'components';
 
 import CardContent from './CardContent';
 import ProductsContent from './ProductsContent';
@@ -43,7 +43,7 @@ export default function Cart() {
       <AppHeader title="carrinho" total={totalCart} />
 
       <StyledContent>
-        {!!totalCart ? (
+        {totalCart ? (
           <>
             <CardContent title="produtos">
               <ProductsContent cart={cart} total={totalCart} />
