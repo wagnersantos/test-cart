@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Tag } from 'components';
 
@@ -22,6 +23,10 @@ const Header = ({ products }) => {
       )}
     </>
   );
+};
+
+Header.propTypes = {
+  products: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default Header;

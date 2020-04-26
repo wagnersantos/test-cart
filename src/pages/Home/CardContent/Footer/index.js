@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
 
 import { Tag } from 'components';
@@ -28,6 +29,11 @@ const Footer = ({ products, value }) => {
       )}
     </>
   );
+};
+
+Footer.propTypes = {
+  products: PropTypes.instanceOf(Object).isRequired,
+  value: PropTypes.instanceOf(Array).isRequired,
 };
 
 export default Footer;

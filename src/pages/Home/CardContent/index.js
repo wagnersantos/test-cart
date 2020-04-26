@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, { useState, memo } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
