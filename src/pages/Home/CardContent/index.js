@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { useDispatch } from 'react-redux';
 
 import Header from './Header';
@@ -57,4 +57,4 @@ const CardContent = ({ products }) => {
   );
 };
 
-export default CardContent;
+export default memo(CardContent);
