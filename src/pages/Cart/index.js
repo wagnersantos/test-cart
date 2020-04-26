@@ -1,21 +1,18 @@
-import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Container } from 'native-base';
 
+import { actions } from './store/actions';
 import { selectors } from './store/reducer';
 
 import { AppHeader } from 'components';
 
 import CardContent from './CardContent';
 import ProductsContent from './ProductsContent';
+import ValuesContent from './ValuesContent';
 
 import {
   StyledContent,
-  ValuesContent,
-  Label,
-  Price,
-  Cents,
   Bottom,
   Error,
   InfoMain,
@@ -27,7 +24,15 @@ import {
 
 export default function Cart() {
   const cart = useSelector(state => selectors.getCart(state));
+
+  const dispatch = useDispatch();
+  const getCart = () => dispatch(actions.fetchCart.request());
+
   const totalCart = cart?.items?.length || 0;
+
+  React.useEffect(() => {
+    getCart();
+  }, []);
 
   return (
     <Container>
@@ -38,11 +43,7 @@ export default function Cart() {
         </CardContent>
 
         <CardContent title="valores totais">
-          <ValuesContent>
-            <Label>R$ </Label>
-            <Price>305</Price>
-            <Cents>,00</Cents>
-          </ValuesContent>
+          <ValuesContent cart={cart} />
         </CardContent>
 
         <Bottom>

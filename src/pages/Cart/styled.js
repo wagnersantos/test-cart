@@ -1,46 +1,11 @@
 import styled from 'styled-components/native';
-import { Text } from 'react-native';
-import { Icon } from 'native-base';
+import { Icon, Text } from 'native-base';
 
 import { colors, typographies } from 'core/assets/styles';
 
 export const StyledContent = styled.View`
   margin: 20px 0;
   padding: 0 16px;
-`;
-
-export const ValuesContent = styled.View`
-  flex: 1;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const Label = styled(Text)`
-  font-family: ${typographies.exoRegular};
-  font-size: 16px;
-  color: ${colors.green};
-  padding-bottom: 3px;
-`;
-
-export const Price = styled(Text)`
-  font-family: ${typographies.exoBold};
-  font-weight: bold;
-  font-size: 26px;
-  color: ${colors.green};
-`;
-
-export const Cents = styled(Text)`
-  font-family: ${typographies.exoRegular};
-  font-size: 14px;
-  color: ${colors.green};
-  padding-bottom: 3px;
-`;
-
-export const StyledIcon = styled(Icon)`
-  color: ${({ disabled, color }) =>
-    disabled ? colors.disabled : colors[color]};
-  font-size: ${({ fontSize }) => fontSize}px;
 `;
 
 export const Bottom = styled.View`
@@ -81,4 +46,10 @@ export const StyledText = styled(Text)`
   font-family: ${typographies.exoRegular};
   text-transform: uppercase;
   margin-left: 5px;
+`;
+
+export const StyledIcon = styled(Icon)`
+  color: ${({ disabled, color }) =>
+    disabled ? colors.disabled : colors[color]};
+  font-size: ${({ fontSize }) => fontSize}px;
 `;

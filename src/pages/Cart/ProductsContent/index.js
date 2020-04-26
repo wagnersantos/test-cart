@@ -28,7 +28,7 @@ const ProductsContent = ({ cart, total }) => {
               </Left>
               <Right>
                 <Quantity>{`${quantity} un`}</Quantity>
-                <PPrice>R$ {currency(product.price)}</PPrice>
+                <PPrice>R$ {currency(product.price * quantity)}</PPrice>
               </Right>
             </MainContent>
           );
