@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { Container, Text, Icon, List, Spinner } from 'native-base';
+import { Container, List, Spinner } from 'native-base';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { AppHeader } from 'components';
@@ -10,16 +10,9 @@ import { selectors as selectorsCart } from 'pages/Cart/store/reducer';
 import { actions as actionsCart } from 'pages/Cart/store/actions';
 
 import CardContent from './CardContent';
+import SearchLine from './SearchLine';
 
-import {
-  StyledSearch,
-  StyledContent,
-  Wrapper,
-  StyledLeft,
-  StyledRight,
-  StyledCheckBox,
-  Results,
-} from './styled';
+import { StyledContent, Results } from './styled';
 
 export default function Home() {
   const [indexVisible, setIndexVisible] = useState(1);
@@ -58,16 +51,7 @@ export default function Home() {
           <Spinner color="black" />
         ) : (
           <>
-            <Wrapper>
-              <StyledLeft>
-                <StyledSearch />
-              </StyledLeft>
-              <StyledRight>
-                <StyledCheckBox />
-                <Text>A Filtrar </Text>
-                <Icon type="MaterialCommunityIcons" name="chevron-down" />
-              </StyledRight>
-            </Wrapper>
+            <SearchLine />
             <Results>{results}</Results>
             <List
               onViewableItemsChanged={onViewableItemsChanged}
