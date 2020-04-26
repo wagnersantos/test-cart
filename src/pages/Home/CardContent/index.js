@@ -1,15 +1,13 @@
 import React, { useState, memo } from 'react';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 
+import { alertConfirm } from 'core/utils/alert';
+import { actions as actionsCart } from 'pages/Cart/store/actions';
+import { Card } from 'components';
 import Header from './Header';
 import Body from './Body';
 import Footer from './Footer';
-
-import { alertConfirm } from 'core/utils/alert';
-
-import { actions as actionsCart } from 'pages/Cart/store/actions';
-
-import { Card } from 'components';
 
 const CardContent = ({ products }) => {
   const [actualValue, setActualValue] = useState('0 un');
@@ -55,6 +53,10 @@ const CardContent = ({ products }) => {
       </Card.Footer>
     </Card>
   );
+};
+
+CardContent.propTypes = {
+  products: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default memo(CardContent);
