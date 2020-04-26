@@ -10,25 +10,26 @@ import { AppHeader } from 'components';
 import CardContent from './CardContent';
 import ProductsContent from './ProductsContent';
 import ValuesContent from './ValuesContent';
+import BottomContent from './BottomContent';
 
-import {
-  StyledContent,
-  Bottom,
-  Error,
-  InfoMain,
-  InfoSecondary,
-  StyledIcon,
-  StyledText,
-  StyledButton,
-} from './styled';
+import { StyledContent, Bottom } from './styled';
 
 export default function Cart() {
   const cart = useSelector(state => selectors.getCart(state));
 
   const dispatch = useDispatch();
   const getCart = () => dispatch(actions.fetchCart.request());
+  const deleteCart = sku => dispatch(actions.deleteCart.request(sku));
 
   const totalCart = cart?.items?.length || 0;
+
+  const sum = cart.items
+    .map(({ product, quantity }) => product.price * quantity)
+    .reduce((accumulator, currentValue) => accumulator + currentValue);
+
+  const removeAllCart = () => {
+    cart.items.map(({ product }) => deleteCart(product.sku));
+  };
 
   React.useEffect(() => {
     getCart();
@@ -43,30 +44,11 @@ export default function Cart() {
         </CardContent>
 
         <CardContent title="valores totais">
-          <ValuesContent cart={cart} />
+          <ValuesContent cart={cart} sum={sum} />
         </CardContent>
 
         <Bottom>
-          <Error>
-            <StyledIcon
-              type="MaterialCommunityIcons"
-              name="alert-circle-outline"
-              color="red"
-              fontSize={23}
-            />
-            <InfoMain>pedido mínimo não alcançado</InfoMain>
-          </Error>
-          <InfoSecondary>falta R$ 45,00</InfoSecondary>
-
-          <StyledButton>
-            <StyledIcon
-              type="MaterialCommunityIcons"
-              name="trash-can-outline"
-              color="black"
-              fontSize={18}
-            />
-            <StyledText>limpar carrinho</StyledText>
-          </StyledButton>
+          <BottomContent sum={sum} removeAllCart={removeAllCart} />
         </Bottom>
       </StyledContent>
     </Container>

@@ -19,10 +19,10 @@ const ProductsContent = ({ cart, total }) => {
 
   return (
     <>
-      {cart.items.map(({ product, quantity, sku }, index) => {
+      {cart.items.map(({ product, quantity }, index) => {
         if (index < 2) {
           return (
-            <MainContent key={sku}>
+            <MainContent key={product.sku}>
               <Left>
                 <Title numberOfLines={1}>{product.name}</Title>
               </Left>
