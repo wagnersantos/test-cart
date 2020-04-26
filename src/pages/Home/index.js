@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useCallback } from 'react';
-import { Container, List, Spinner } from 'native-base';
+import { Container, Spinner } from 'native-base';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { AppHeader } from 'components';
@@ -13,7 +13,7 @@ import { actions } from './store/actions';
 import CardContent from './CardContent';
 import SearchLine from './SearchLine';
 
-import { StyledContent, Results } from './styled';
+import { StyledContent, Results, StyledList } from './styled';
 
 export default function Home() {
   const [indexVisible, setIndexVisible] = useState(1);
@@ -54,7 +54,7 @@ export default function Home() {
           <>
             <SearchLine />
             <Results>{results}</Results>
-            <List
+            <StyledList
               onViewableItemsChanged={onViewableItemsChanged}
               viewabilityConfig={itemVisiblePercentThreshold}
               keyExtractor={item => item.sku}
