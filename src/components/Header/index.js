@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { Left, Body, Right, Button } from 'native-base';
@@ -39,7 +40,7 @@ const AppHeader = ({ title, total }) => {
         >
           <StyledIcon type="MaterialCommunityIcons" name="cart" fontSize="24" />
         </TouchableOpacity>
-        <StyledBadge colorText="black">{total}</StyledBadge>
+        {!!total && <StyledBadge colorText="black">{total}</StyledBadge>}
       </Right>
     </StyledHeader>
   );
