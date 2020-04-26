@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import debounce from 'lodash/debounce';
+import PropTypes from 'prop-types';
 
 import { currency } from 'core/utils/currency';
 
@@ -31,15 +32,20 @@ const Body = ({ products, value }) => {
   ] = value;
 
   const handleCounter = debounce(
-    useCallback(count => {
-      const quantity = Number(count);
-      const { price, sku } = products;
+    useCallback(
+      count => {
+        const quantity = Number(count);
+        const { price, sku } = products;
 
-      const value = Number(price) * quantity;
-      setTotal(value);
+        const val = Number(price) * quantity;
+        setTotal(val);
 
-      count > 0 && addCart({ quantity, sku });
-    }, []),
+        if (count > 0) {
+          addCart({ quantity, sku });
+        }
+      },
+      [addCart, products, setTotal],
+    ),
     300,
   );
 
@@ -93,6 +99,11 @@ const Body = ({ products, value }) => {
       </Modal>
     </>
   );
+};
+
+Body.propTypes = {
+  products: PropTypes.instanceOf(Object).isRequired,
+  value: PropTypes.instanceOf(Array).isRequired,
 };
 
 export default Body;
