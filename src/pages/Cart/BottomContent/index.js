@@ -16,7 +16,7 @@ const BottomContent = ({ sum, removeAllCart }) => {
 
   return (
     <>
-      {diff > 0 && (
+      {!!diff > 0 && (
         <>
           <Error>
             <StyledIcon

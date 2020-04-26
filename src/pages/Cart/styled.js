@@ -7,6 +7,9 @@ export const StyledContent = styled.View`
   margin: 20px 0;
   padding: 0 16px;
 `;
+export const Bottom = styled.View`
+  padding-top: 30px;
+`;
 
 export const EmptyCart = styled.View`
   justify-content: center;

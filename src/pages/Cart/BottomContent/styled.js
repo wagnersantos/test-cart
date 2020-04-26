@@ -3,10 +3,6 @@ import { Text, Icon } from 'native-base';
 
 import { colors, typographies } from 'core/assets/styles';
 
-export const Bottom = styled.View`
-  padding-top: 30px;
-`;
-
 export const Error = styled.View`
   flex: 1;
   flex-direction: row;
